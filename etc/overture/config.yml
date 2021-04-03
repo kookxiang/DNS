@@ -1,0 +1,33 @@
+bindAddress: :1053
+dohEnabled: false
+primaryDNS:
+  - name: China
+    address: 127.0.0.1:5301
+    protocol: udp
+    timeout: 6
+    ednsClientSubnet:
+      policy: disable
+alternativeDNS:
+  - name: Trusted
+    address: 127.0.0.1:5302
+    protocol: udp
+    timeout: 6
+    ednsClientSubnet:
+      policy: disable
+onlyPrimaryDNS: false
+ipv6UseAlternativeDNS: false
+alternativeDNSConcurrent: false
+whenPrimaryDNSAnswerNoneUse: primaryDNS
+ipNetworkFile:
+  primary: /etc/overture/china-ip.txt
+domainFile:
+  alternative: /etc/overture/gfwlist.txt
+  matcher: full-map
+hostsFile:
+  hostsFile: /etc/overture/hosts.txt
+  finder: full-map
+minimumTTL: 0
+domainTTLFile: /etc/overture/domain-ttl.txt
+cacheSize: 8192
+rejectQType:
+  - 255
